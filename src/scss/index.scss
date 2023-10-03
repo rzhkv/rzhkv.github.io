@@ -1,7 +1,15 @@
 body {
-  font-size: clamp(16px, 4vw, 48px);
-  font-family: "ITC Clearface Std";
-  line-height: 1.75;
+  font-size: clamp(12px, 4vw, 18px);
+  font-family: "Inter Tight";
+  line-height: 1.25;
+}
+
+ul,
+ol,
+nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 p,
@@ -9,83 +17,227 @@ li {
   margin: 0;
 }
 
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+a,
+.link {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease-in-out;
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: none;
+    opacity: 0.5;
+  }
 }
 
-a {
-  cursor: pointer;
-  color: blue;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 10px;
-}
-
-.preloader {
-  background-color: #fff;
-  z-index: 10;
-
-  display: flex;
+.button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  position: fixed;
+  cursor: pointer;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+
+  transition: all 0.3s ease;
+
+  &-link {
+    height: 40px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 4px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+}
+
+.container {
+  max-width: 92rem;
+  margin: 0 auto;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header {
+  padding-top: 1.25rem;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
+  color: #fff;
 
-  &-text {
-    overflow: hidden;
-    font-size: 30rem;
-
+  &-container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  &-logo {
+    max-width: 120px;
+
+    img {
+      display: block;
+      width: 100%;
+    }
   }
 }
 
 .main {
-  padding-bottom: 3rem;
-  padding-top: 3rem;
-  margin: 0 5%;
+  padding-top: 10rem;
+  background: #000;
+  color: #fff;
 }
 
-.header {
-  margin-bottom: 3rem;
-}
-
-.section {
-  margin-bottom: 3rem;
-
-  &-border {
-    padding-top: 3rem;
-    border-top: 1px solid #c0c0c0;
-  }
+.hero {
+  margin-bottom: 5rem;
 }
 
 .title {
+  font-weight: 500;
+  font-size: clamp(24px, 4vw, 56px);
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  max-width: 52rem;
+  color: #8f8f8f;
+  margin-bottom: 1.5rem;
+}
+
+.skills {
   display: flex;
   align-items: center;
 
-  svg {
-    margin-right: 1rem;
+  li {
+    display: flex;
+    align-items: center;
+
+    &:after {
+      width: 4px;
+      height: 4px;
+      background: currentColor;
+      margin-left: 0.75rem;
+      margin-right: 0.75rem;
+      border-radius: 50%;
+      content: "";
+    }
+
+    &:last-child:after {
+      display: none;
+    }
   }
 }
 
-.text {
-  font-size: clamp(14px, 4vw, 32px);
-  font-family: "Inter Tight";
-  margin-bottom: 1rem;
-  
+.section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
 
-  svg {
-    margin-right: 8px;
-    margin-left: 8px;
+  &-title {
+    margin-bottom: 2rem;
   }
 }
 
-.footer {
-  padding-top: 3rem;
-  text-align: center;
-  border-top: 1px solid #c0c0c0;
-  font-size: clamp(10px, 4vw, 24px);
+.projects {
+  &-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 20rem;
+    gap: 2rem;
+  }
+
+  &-item {
+    height: 100%;
+    position: relative;
+    border-radius: 0.25rem;
+    overflow: hidden;
+
+    &-preview {
+      display: flex;
+      justify-content: flex-end;
+
+      position: absolute;
+      height: 100%;
+      width: 100%;
+
+      padding: 7.5rem 5rem 0;
+
+      img {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    &-overlay {
+      height: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      transition: all .3s ease;
+      padding: 1rem;
+    }
+
+    &-title {
+      font-weight: 500;
+      font-size: clamp(16px, 4vw, 28px);
+      margin-bottom: 0.25rem;
+    }
+
+    &-description {
+      font-size: clamp(12px, 4vw, 14px);
+      color: #8f8f8f;
+    }
+
+    &-link {
+      cursor: pointer;
+      z-index: 15;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      .projects-item-overlay {
+        background: rgba(255, 255, 255, 0.15);
+      }
+    }
+  }
+}
+
+.jobs {
+  &-wrapper {
+    display: grid;
+    grid-template: auto / 1fr;
+    gap: 2rem;
+  }
+
+  &-item {
+    font-size: clamp(16px, 4vw, 28px);
+    font-weight: 300;
+
+    display: flex;
+    align-items: center;
+
+    &:before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' width='40' height='40' fill='%23fff'%3E%3Cpath d='M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z'%3E%3C/path%3E%3C/svg%3E");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      content: "";
+      width: 2rem;
+      height: 2rem;
+      margin-right: 1rem;
+    }
+  }
 }
